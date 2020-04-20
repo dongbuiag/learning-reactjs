@@ -92,14 +92,15 @@
       const history = this.state.history;
       const current = history[this.state.stepNumber];
       const winner = calculateWinner(current.squares);
+      console.log(history);
 
-      const moves = history.map((step, move) => {
-        const desc = move ?
-            'Go to move #' + move :
+      const steps = history.map((square, step) => {
+        const desc = step ?
+            'Go to move #' + step :
             'Go to game start';
         return (
-            <li key={move}>
-              <button onClick={() => this.jumpTo(move)}>{desc}</button>
+            <li key={step}>
+              <button onClick={() => this.jumpTo(step)}>{desc}</button>
             </li>
         );
       });
@@ -120,7 +121,7 @@
             </div>
             <div className="game-info">
               <div>{status}</div>
-              <ol>{moves}</ol>
+              <ol>{steps}</ol>
             </div>
           </div>
       );
